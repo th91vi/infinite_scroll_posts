@@ -22,13 +22,13 @@ h1 {
     text-align: center;
 }
 
-filter-container {
+.filter-container {
     margin-top: 20px;
     width: 80vw;
     max-width: 800px;
 }
 
-filter {
+.filter {
     width: 100%;
     padding: 12px;
 }
