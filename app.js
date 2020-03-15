@@ -34,4 +34,27 @@ async function showPosts(){
     )
 }
 
+// exibe loader e faz fetch de mais posts
+function showLoading(){
+    loader.classList.add('show')
+
+    setTimeout(() => {
+        loader.classList.remove('show');
+
+        setTimeout(() => {
+            page++;
+            showPosts();
+        }, 300)
+    }, 1000)
+}
+
 showPosts();
+
+window.addEventListener('scroll', () => {
+    // console.log(document.documentElement.scrollTop);
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+
+    if (scrollTop + clientHeight >= scrollHeight - 5) {
+        showLoading()
+    }
+})
