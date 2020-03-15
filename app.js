@@ -48,6 +48,22 @@ function showLoading(){
     }, 1000)
 }
 
+function filterPosts(e){
+    const term = e.target.value.toUpperCase();
+    const posts = document.querySelectorAll('.post');
+
+    posts.forEach(post => {
+        const title = post.querySelector('.post-title').innerText.toUpperCase();
+        const body = post.querySelector('.post-body').innerText.toUpperCase();
+
+        if(title.indexOf(term) > -1 || body.indexOf(term) > -1){
+            post.style.display = 'flex';
+        } else {
+            post.style.display = 'none';
+        }
+    });
+};
+
 showPosts();
 
 window.addEventListener('scroll', () => {
@@ -57,4 +73,6 @@ window.addEventListener('scroll', () => {
     if (scrollTop + clientHeight >= scrollHeight - 5) {
         showLoading()
     }
-})
+});
+
+filter.addEventListener('input', filterPosts);
